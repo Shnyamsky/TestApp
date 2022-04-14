@@ -6,6 +6,7 @@ import { useAppSelector } from "./hooks/store"
 import Layout from "./layout"
 
 import AuthPage from "./pages/Auth"
+import LoginPage from "./pages/Login"
 import EditTestPage from "./pages/Edit"
 import PassingTestPage from "./pages/PassingTest"
 import ResultPage from "./pages/Result"
@@ -17,17 +18,20 @@ function App() {
   const navigate = useNavigate()
   const location = useLocation()
 
-  /*useEffect(() => {
-    if (!isAuthorized && location.pathname !== "/auth") {
+  useEffect(() => {
+    const notAuthOrLoginPage = location.pathname !== "/auth" && location.pathname !== "/login"
+    
+    if (!isAuthorized && notAuthOrLoginPage) {
       navigate("/auth")
     }
-  })*/
+  })
 
   return (
     <div className="App">
       <Layout>
         <Routes>
           <Route path="/auth" element={<AuthPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/tests" element={<TestListPage />} />
           <Route path="/result" element={<ResultPage />} />
           <Route path="/test/:slug" element={<PassingTestPage />} />
