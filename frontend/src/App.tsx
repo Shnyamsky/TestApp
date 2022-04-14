@@ -19,9 +19,6 @@ function App() {
   const location = useLocation()
 
   useEffect(() => {
-    /*if (!isAuthorized && location.pathname !== "/auth") {
-      navigate("/auth")
-    }*/
     const notAuthOrLoginPage = location.pathname !== "/auth" && location.pathname !== "/login"
     
     if (!isAuthorized && notAuthOrLoginPage) {
