@@ -1,0 +1,20 @@
+.testItem {
+  padding: 12px;
+  border-bottom: 1px solid gray;
+  color: white;
+}
+
+.testItem a {
+  color: white;
+  text-decoration: none;
+}
+
+.testItem:hover a {
+  color: gray;
+  cursor: pointer;
+}
+
+.testItem:hover {
+  color: gray;
+  cursor: pointer;
+}

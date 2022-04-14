@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  height: 64px;
+  background: #5a5b97;
+  width: 100%;
+  padding: 0 125px;
+  gap: 35px;
+}
+
+.header a {
+  color: white;
+}

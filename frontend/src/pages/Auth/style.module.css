@@ -1,0 +1,30 @@
+.authRoot {
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  gap: 50px;
+}
+
+.authRoot section {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #5a5b97;
+  border-radius: 15px;
+  background: #5a5b97;
+}
+
+.inputField {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.authBtn {
+  font-size: 18px;
+  width: max-content;
+}
+
+.error {
+  color: red;
+}

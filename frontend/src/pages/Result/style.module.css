@@ -1,0 +1,26 @@
+.container {
+  border: 1px solid #5a5b97;
+  border-radius: 15px;
+  background: #5a5b97;
+  padding: 50px;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.answerCase {
+  font-size: 18px;
+}
+
+.answerCase input {
+  margin-right: 30px;
+}
+
+.nextBtn {
+  display: block;
+  margin-top: 30px;
+  height: 45px;
+  width: max-content;
+}
