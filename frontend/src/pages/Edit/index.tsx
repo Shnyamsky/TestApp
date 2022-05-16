@@ -33,7 +33,7 @@ const EditTestPage = () => {
     if (data) {
       dispatch(editActions.setupTest(data))
     }
-  }, [data, dispatch])
+  }, [])
 
   if (isLoading) {
     return <div>Загрузка...</div>
