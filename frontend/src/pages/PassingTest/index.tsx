@@ -37,7 +37,7 @@ const PassingTestPage = () => {
   return (
     <main className={style.testContainer}>
       <h4>
-        {data.title}, Вoпрос {current + 1} / {data.questions.length}
+        {data.title}. Вoпрос {current + 1} / {data.questions.length}
       </h4>
       <h3>{data.questions[current].text}</h3>
 

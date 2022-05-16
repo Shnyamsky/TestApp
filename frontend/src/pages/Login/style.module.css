@@ -1,30 +1,76 @@
 .loginRoot {
-    max-width: 1000px;
-    width: 100%;
-    display: flex;
-    gap: 50px;
-  }
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  gap: 50px;
+}
   
-  .loginRoot section {
-    width: 100%;
-    padding: 20px;
-    border: 1px solid #5a5b97;
-    border-radius: 15px;
-    background: #5a5b97;
-  }
+.loginRoot section {
+  width: 100%;
+  padding: 20px;
+  border: 2px solid #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.3);
+}
   
-  .inputField {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-bottom: 20px;
-  }
-  
-  .loginBtn {
-    font-size: 18px;
-    width: max-content;
-  }
-  
-  .error {
-    color: red;
-  }
+.inputField {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  font-color: #fff;
+}
+
+.inputField input {
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #fff;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 18px;
+  color: #fff;
+}
+
+::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.loginBtn {
+  font-size: 18px;
+  width: max-content;
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid #fff;
+  border-radius: 15px;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+.authBtn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.loginLink {
+  margin-top: 15px;
+  width: 100%;
+  font-size: 15px;
+  color: #fff;
+  display: inline-block;
+}
+
+.error {
+  color: red;
+}

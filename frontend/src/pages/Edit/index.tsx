@@ -48,7 +48,7 @@ const EditTestPage = () => {
           <input
             type="text"
             value={test.title}
-            className={style.input}
+            className={style.inputTest}
             onChange={(e) => dispatch(editActions.changeTitle(e.target.value))}
           />
         </label>
@@ -56,15 +56,15 @@ const EditTestPage = () => {
 
       {test.questions &&
         test.questions.map((question: any, questionIndex: number) => (
-          <div>
+          <div className={style.editBlock}>
             <div>
-              <span>{questionIndex + 1} - </span>
               <label>
-                Вопрос:
+                Вопрос
+                <span> {questionIndex + 1}: </span>
                 <input
                   type="text"
                   value={question.text}
-                  className={style.input}
+                  className={style.inputQues}
                   onChange={(e) => dispatch(editActions.changeQuestionTitle({ questionIndex, text: e.target.value }))}
                 />
               </label>
@@ -73,12 +73,12 @@ const EditTestPage = () => {
             {question.answers.map((answer: any, answerIndex: number) => (
               <div>
                 <label>
-                  <span>{answerIndex + 1} - </span>
-                  Ответ:
+                  Ответ
+                  <span> {answerIndex + 1}: </span>
                   <input
                     type="text"
                     value={answer.text}
-                    className={style.input}
+                    className={style.inputAns}
                     onChange={(e) =>
                       dispatch(editActions.changeAnswerTitle({ questionIndex, answerIndex, text: e.target.value }))
                     }
@@ -86,7 +86,7 @@ const EditTestPage = () => {
                   <input
                     type="number"
                     value={answer.points}
-                    className={style.input}
+                    className={style.inputNum}
                     onChange={(e) => dispatch(editActions.changeQuestionTitle({ questionIndex, text: e.target.value }))}
                   />
                 </label>
@@ -94,7 +94,7 @@ const EditTestPage = () => {
             ))}
           </div>
         ))}
-      <button onClick={saveTest}>Coхранить</button>
+      <button className={style.editBtn} onClick={saveTest}>Coхранить</button>
     </main>
   )
 }
