@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useQuery } from "react-query"
 import { useNavigate, useParams } from "react-router-dom"
+import axios from "axios"
 import { useAppDispatch, useAppSelector } from "../../hooks/store"
 import { editActions } from "../../store/reducers/editTest"
 import style from "./style.module.css"
@@ -13,18 +14,11 @@ const EditTestPage = () => {
   const navigate = useNavigate()
 
   const { isLoading, error, data } = useQuery("passing-test", () =>
-    fetch(`http://127.0.0.1:4000/tests/${slug}`).then((res) => res.json())
+    axios.get(`/api/tests/${slug}`).then((res) => res.data())
   )
 
   const saveTest = () => {
-    fetch(`http://127.0.0.1:4000/tests`, {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ test })
-    })
+    axios.put(`/api/tests`, { test })
 
     navigate("/tests", { state: { isEditList: false } })
   }
@@ -65,7 +59,11 @@ const EditTestPage = () => {
                   type="text"
                   value={question.text}
                   className={style.inputQues}
-                  onChange={(e) => dispatch(editActions.changeQuestionTitle({ questionIndex, text: e.target.value }))}
+                  onChange={(e) =>
+                    dispatch(
+                      editActions.changeQuestionTitle({ questionIndex, text: e.target.value })
+                    )
+                  }
                 />
               </label>
             </div>
@@ -80,21 +78,33 @@ const EditTestPage = () => {
                     value={answer.text}
                     className={style.inputAns}
                     onChange={(e) =>
-                      dispatch(editActions.changeAnswerTitle({ questionIndex, answerIndex, text: e.target.value }))
+                      dispatch(
+                        editActions.changeAnswerTitle({
+                          questionIndex,
+                          answerIndex,
+                          text: e.target.value
+                        })
+                      )
                     }
                   />
                   <input
                     type="number"
                     value={answer.points}
                     className={style.inputNum}
-                    onChange={(e) => dispatch(editActions.changeQuestionTitle({ questionIndex, text: e.target.value }))}
+                    onChange={(e) =>
+                      dispatch(
+                        editActions.changeQuestionTitle({ questionIndex, text: e.target.value })
+                      )
+                    }
                   />
                 </label>
               </div>
             ))}
           </div>
         ))}
-      <button className={style.editBtn} onClick={saveTest}>Coхранить</button>
+      <button className={style.editBtn} onClick={saveTest}>
+        Coхранить
+      </button>
       {error}
     </main>
   )

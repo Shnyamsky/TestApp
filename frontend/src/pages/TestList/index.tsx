@@ -1,3 +1,4 @@
+import axios from "axios"
 import React from "react"
 import { useQuery } from "react-query"
 import { Link, useLocation } from "react-router-dom"
@@ -5,7 +6,7 @@ import style from "./style.module.css"
 
 const TestListPage = () => {
   const { isLoading, error, data } = useQuery("tests", () =>
-    fetch("http://127.0.0.1:4000/tests").then((res) => res.json())
+    axios.get("/api/tests").then((res) => res.data)
   )
 
   const location = useLocation() as { state: { isEditList: boolean } }

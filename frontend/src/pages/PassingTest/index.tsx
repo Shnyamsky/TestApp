@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useState } from "react"
 import { useQuery } from "react-query"
 import { useNavigate, useParams } from "react-router-dom"
@@ -7,7 +8,7 @@ const PassingTestPage = () => {
   const { slug } = useParams()
 
   const { isLoading, error, data } = useQuery("passing-test", () =>
-    fetch(`http://127.0.0.1:4000/tests/${slug}`).then((res) => res.json())
+    axios.get(`/api/tests/${slug}`).then((res) => res.data)
   )
 
   const [current, setCurrent] = useState(0)

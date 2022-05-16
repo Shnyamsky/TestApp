@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  frontend:
+    command: npm run dev
+    environment:
+      - PORT=3000
+    volumes:
+      - ./frontend/src:/usr/src/app/src
+
+  backend:
+    command: npm run dev
+    volumes:
+      - ./backend/src:/usr/src/app/src
+
+  nginx:
+    volumes:
+      - ./nginx/nginx.conf.dev:/etc/nginx/conf.d/nginx.conf

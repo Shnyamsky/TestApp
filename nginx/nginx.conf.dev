@@ -1,0 +1,29 @@
+map $http_upgrade $connection_upgrade { 
+    default upgrade;
+    ''      close;
+} 
+
+upstream websocket {
+    server test-app.local;
+}
+
+server {
+  listen 80;
+
+  server_name test-app.local;
+
+
+  location / {
+    proxy_pass http://frontend:3000;
+
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header Upgrade $http_upgrade; 
+    proxy_set_header Connection $connection_upgrade;
+  }
+
+  location /api {
+    proxy_pass http://backend:3001;
+    rewrite ^/api/(.*) /$1 break;
+  }
+}
