@@ -8,9 +8,9 @@
   },
   "scripts": {
     "test": "npm run build:ts && tsc -p test/tsconfig.json && tap --ts test/**/*.test.ts",
-    "start": "npm run build:ts && fastify start -l info dist/app.js -p 4000",
+    "start": "npm run build:ts && fastify start -l info dist/app.js -p 3001",
     "build:ts": "tsc",
-    "dev": "tsc && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"tsc -w\" \"fastify start -p 4000 --ignore-watch=.ts$ -w -l info -P dist/app.js\""
+    "dev": "tsc && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"tsc -w\" \"fastify start -p 3001 --ignore-watch=.ts$ -w -l info -P dist/app.js\""
   },
   "keywords": [],
   "author": "",

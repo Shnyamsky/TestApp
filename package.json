@@ -1,0 +1,19 @@
+{
+  "name": "testapp",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "docker-compose up --build",
+    "dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shnyamsky/TestApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shnyamsky/TestApp/issues"
+  },
+  "homepage": "https://github.com/Shnyamsky/TestApp#readme"
+}
