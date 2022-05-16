@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useQuery } from "react-query"
 import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
@@ -105,6 +105,7 @@ const EditTestPage = () => {
       <button className={style.editBtn} onClick={saveTest}>
         Coхранить
       </button>
+      {error}
     </main>
   )
 }

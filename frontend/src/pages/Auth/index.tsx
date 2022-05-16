@@ -50,6 +50,7 @@ const AuthPage: FC = () => {
             Войти как преподаватель
           </Link>
         </section>
+        {error}
       </main>
     </>
   )
