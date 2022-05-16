@@ -1,9 +1,10 @@
+import axios from "axios"
 import { useQuery } from "react-query"
 import style from "./style.module.css"
 
 const ResultsTablePage = () => {
   const { isLoading, error, data } = useQuery("results", () =>
-    fetch("http://127.0.0.1:4000/result").then((res) => res.json())
+    axios.get("/api/result").then((res) => res.data)
   )
 
   if (isLoading) {

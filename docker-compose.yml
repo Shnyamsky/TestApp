@@ -1,0 +1,61 @@
+version: "3"
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: test-app-frontend
+    command: serve -s build -l 3000
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+    depends_on:
+      - backend
+    networks:
+      - test-app-network
+
+  backend:
+    build: ./backend
+    container_name: test-app-backend
+    command: npm run start
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - MONGO_URL=mongodb://mongodb:27017/db
+    networks:
+      - test-app-network
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: test-app-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf.prod:/etc/nginx/conf.d/nginx.conf
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - test-app-network
+
+  mongodb:
+    image: mongo:latest
+    command:
+      - "--logpath"
+      - "/var/log/mongodb/mongodb.log"
+    container_name: test-app-mongodb
+    restart: always
+    volumes:
+      - mongodb:/data/db
+    networks:
+      - test-app-network
+
+volumes:
+  mongodb:
+
+networks:
+  test-app-network:
+    driver: bridge

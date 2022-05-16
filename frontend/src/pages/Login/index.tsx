@@ -1,3 +1,4 @@
+import axios from "axios"
 import { FC, useState } from "react"
 import { useMutation } from "react-query"
 import { Link, useNavigate } from "react-router-dom"
@@ -13,18 +14,9 @@ const LoginPage: FC = () => {
 
   const dispatch = useAppDispatch()
 
-  const loginMutation = useMutation((loginData: { email: string; password: string }) => {
-    return fetch(`http://127.0.0.1:4000/users/login`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ user: loginData })
-    }).then((res) => {
-      return res.json()
-    })
-  })
+  const loginMutation = useMutation((loginData: { email: string; password: string }) =>
+    axios.post(`/api/users/login`, { user: loginData }).then((res) => res.data)
+  )
 
   const enterAsAdmin = () => {
     if (!email || !password) {
@@ -53,14 +45,27 @@ const LoginPage: FC = () => {
         <section>
           Преподаватель
           <label className={style.inputField}>
-            <input type="email" placeholder="Введите email" onChange={(e) => changeEmail(e.target.value)} value={email} />
+            <input
+              type="email"
+              placeholder="Введите email"
+              onChange={(e) => changeEmail(e.target.value)}
+              value={email}
+            />
           </label>
           <label className={style.inputField}>
-            <input type="password" placeholder="Введите пароль" onChange={(e) => changePass(e.target.value)} value={password} />
+            <input
+              type="password"
+              placeholder="Введите пароль"
+              onChange={(e) => changePass(e.target.value)}
+              value={password}
+            />
           </label>
-
-          <button className={style.loginBtn} onClick={enterAsAdmin}>Войти</button>
-          <Link className={style.loginLink} to="/auth">Войти как студент</Link>
+          <button className={style.loginBtn} onClick={enterAsAdmin}>
+            Войти
+          </button>
+          <Link className={style.loginLink} to="/auth">
+            Войти как студент
+          </Link>
         </section>
       </main>
     </>

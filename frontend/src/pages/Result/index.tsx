@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { useAppSelector } from "../../hooks/store"
@@ -10,14 +11,7 @@ const ResultPage = () => {
   const { score, testName } = location.state
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:4000/result`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ result: { score, name, testName } })
-    })
+    axios.post(`/api/result`, { result: { score, name, testName } })
   }, [])
 
   const showAnswer = () => {
