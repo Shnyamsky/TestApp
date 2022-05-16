@@ -2,6 +2,7 @@ import axios from "axios"
 import { FC, useState } from "react"
 import { useMutation } from "react-query"
 import { Link, useNavigate } from "react-router-dom"
+import { API } from "../../api"
 import { useAppDispatch } from "../../hooks/store"
 import { userActions } from "../../store/reducers/user"
 import style from "./style.module.css"
@@ -11,12 +12,18 @@ const LoginPage: FC = () => {
   const [password, changePass] = useState("")
   const [error, setError] = useState("")
   const navigate = useNavigate()
-
   const dispatch = useAppDispatch()
 
-  const loginMutation = useMutation((loginData: { email: string; password: string }) =>
-    axios.post(`/api/users/login`, { user: loginData }).then((res) => res.data)
-  )
+  const onSuccessEnter = (data) => {
+    if (data.message) {
+      setError(data.message)
+    }
+
+    dispatch(userActions.enterAsAdmin({ ...data }))
+    navigate("/tests", { state: { isEditList: false } })
+  }
+
+  const loginMutation = useMutation(API.loginRequest, { onSuccess: onSuccessEnter })
 
   const enterAsAdmin = () => {
     if (!email || !password) {
@@ -26,13 +33,6 @@ const LoginPage: FC = () => {
     setError("")
 
     loginMutation.mutate({ email, password })
-
-    if (loginMutation.data.message) {
-      setError(loginMutation.data.message)
-    }
-
-    dispatch(userActions.enterAsAdmin({ ...loginMutation.data }))
-    navigate("/tests", { state: { isEditList: false } })
   }
 
   return (

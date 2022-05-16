@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
+import { API } from "../../api"
 import { useAppSelector } from "../../hooks/store"
 import style from "./style.module.css"
 
@@ -11,7 +12,7 @@ const ResultPage = () => {
   const { score, testName } = location.state
 
   useEffect(() => {
-    axios.post(`/api/result`, { result: { score, name, testName } })
+    API.saveResult({ score, name, testName })
   }, [])
 
   const showAnswer = () => {

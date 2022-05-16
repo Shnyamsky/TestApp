@@ -5,6 +5,7 @@ import axios from "axios"
 import { useAppDispatch, useAppSelector } from "../../hooks/store"
 import { editActions } from "../../store/reducers/editTest"
 import style from "./style.module.css"
+import { API } from "../../api"
 
 const EditTestPage = () => {
   const { slug } = useParams()
@@ -13,12 +14,10 @@ const EditTestPage = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const { isLoading, error, data } = useQuery("passing-test", () =>
-    axios.get(`/api/tests/${slug}`).then((res) => res.data())
-  )
+  const { isLoading, error, data } = useQuery("passing-test", API.getPassingTest(slug))
 
   const saveTest = () => {
-    axios.put(`/api/tests`, { test })
+    API.saveTest(test)
 
     navigate("/tests", { state: { isEditList: false } })
   }

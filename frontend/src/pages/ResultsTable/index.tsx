@@ -1,11 +1,10 @@
 import axios from "axios"
 import { useQuery } from "react-query"
+import { API } from "../../api"
 import style from "./style.module.css"
 
 const ResultsTablePage = () => {
-  const { isLoading, error, data } = useQuery("results", () =>
-    axios.get("/api/result").then((res) => res.data)
-  )
+  const { isLoading, error, data } = useQuery("results", API.getResults)
 
   if (isLoading) {
     return <div>Загрузка...</div>
