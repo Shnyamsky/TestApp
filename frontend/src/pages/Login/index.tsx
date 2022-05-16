@@ -11,11 +11,21 @@ const LoginPage: FC = () => {
   const [password, changePass] = useState("")
   const [error, setError] = useState("")
   const navigate = useNavigate()
-
   const dispatch = useAppDispatch()
 
-  const loginMutation = useMutation((loginData: { email: string; password: string }) =>
-    axios.post(`/api/users/login`, { user: loginData }).then((res) => res.data)
+  const onSuccessEnter = (data) => {
+    if (data.message) {
+      setError(data.message)
+    }
+
+    dispatch(userActions.enterAsAdmin({ ...data }))
+    navigate("/tests", { state: { isEditList: false } })
+  }
+
+  const loginMutation = useMutation(
+    (loginData: { email: string; password: string }) =>
+      axios.post(`/api/users/login`, { user: loginData }).then((res) => res.data),
+    { onSuccess: onSuccessEnter }
   )
 
   const enterAsAdmin = () => {
@@ -26,13 +36,6 @@ const LoginPage: FC = () => {
     setError("")
 
     loginMutation.mutate({ email, password })
-
-    if (loginMutation.data.message) {
-      setError(loginMutation.data.message)
-    }
-
-    dispatch(userActions.enterAsAdmin({ ...loginMutation.data }))
-    navigate("/tests", { state: { isEditList: false } })
   }
 
   return (
