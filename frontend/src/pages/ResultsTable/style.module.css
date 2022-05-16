@@ -1,7 +1,7 @@
 .container {
-  border: 1px solid #5a5b97;
+  border: 2px solid #fff;
   border-radius: 15px;
-  background: #5a5b97;
+  background: rgba(0, 0, 0, 0.3);
   padding: 50px;
   width: 1000px;
   display: flex;
@@ -10,17 +10,19 @@
   align-items: center;
 }
 
-.answerCase {
-  font-size: 18px;
+table {
+  border-collapse: collapse;
 }
 
-.answerCase input {
-  margin-right: 30px;
+th, td {
+  border-bottom: 1px solid #fff;
+  padding: 10px;
+  text-align: left;
 }
 
-.nextBtn {
-  display: block;
-  margin-top: 30px;
-  height: 45px;
-  width: max-content;
+tr:hover {background-color: rgba(255, 255, 255, 0.3);}
+
+th {
+  background-color: rgba(255, 255, 255, 0.3);;
+  color: white;
 }

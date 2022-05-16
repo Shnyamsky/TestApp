@@ -9,24 +9,24 @@ const Header: FC = () => {
   return (
     <header className={style.header}>
       {isAuthorized && (
-        <div>
+        <div className={style.headerData}>
           {name} {surName}
         </div>
       )}
 
       {isAuthorized && (
-        <Link to="/tests" state={{ isEditList: false }}>
+        <Link className={style.headerLink} to="/tests" state={{ isEditList: false }}>
           Опросы
         </Link>
       )}
 
-      {isAdmin && <Link to="/results-table">Результаты</Link>}
-
       {isAdmin && (
-        <Link to="/tests" state={{ isEditList: true }}>
+        <Link className={style.headerLink} to="/tests" state={{ isEditList: true }}>
           Редактирование
         </Link>
       )}
+
+      {isAdmin && <Link className={style.headerLink} to="/results-table">Результаты</Link>}
     </header>
   )
 }

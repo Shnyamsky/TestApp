@@ -1,26 +1,19 @@
 .container {
-  border: 1px solid #5a5b97;
+  border: 2px solid #fff;
   border-radius: 15px;
-  background: #5a5b97;
+  background: rgba(0, 0, 0, 0.3);
   padding: 50px;
   width: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
 }
 
-.answerCase {
-  font-size: 18px;
-}
-
-.answerCase input {
-  margin-right: 30px;
-}
-
-.nextBtn {
-  display: block;
-  margin-top: 30px;
-  height: 45px;
-  width: max-content;
+.resLink {
+  margin-top: 15px;
+  width: 100%;
+  font-size: 20px;
+  color: #fff;
+  display: inline-block;
 }

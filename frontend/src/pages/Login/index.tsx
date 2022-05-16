@@ -51,17 +51,16 @@ const LoginPage: FC = () => {
 
       <main className={style.loginRoot}>
         <section>
+          Преподаватель
           <label className={style.inputField}>
-            Email
-            <input type="email" onChange={(e) => changeEmail(e.target.value)} value={email} />
+            <input type="email" placeholder="Введите email" onChange={(e) => changeEmail(e.target.value)} value={email} />
           </label>
           <label className={style.inputField}>
-            Пароль
-            <input type="password" onChange={(e) => changePass(e.target.value)} value={password} />
+            <input type="password" placeholder="Введите пароль" onChange={(e) => changePass(e.target.value)} value={password} />
           </label>
 
           <button className={style.loginBtn} onClick={enterAsAdmin}>Войти</button>
-          <Link to="/auth"><button className={style.loginBtn}>Войти как студент</button></Link>
+          <Link className={style.loginLink} to="/auth">Войти как студент</Link>
         </section>
       </main>
     </>

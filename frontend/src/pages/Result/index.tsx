@@ -48,7 +48,7 @@ const ResultPage = () => {
     <main className={style.container}>
       Результат: {score}
       <div>{showAnswer()}</div>
-      <Link to="/tests" state={{ isEditList: false }}>
+      <Link className={style.resLink} to="/tests" state={{ isEditList: false }}>
         Обратно к опросам
       </Link>
     </main>

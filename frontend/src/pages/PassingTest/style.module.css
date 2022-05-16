@@ -1,7 +1,7 @@
 .testContainer {
-  border: 1px solid #5a5b97;
+  border: 2px solid #fff;
   border-radius: 15px;
-  background: #5a5b97;
+  background: rgba(0, 0, 0, 0.3);
   padding: 50px;
   width: 1000px;
   display: flex;
@@ -11,17 +11,32 @@
 }
 
 .answerCase {
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .answerCase input {
-  margin-right: 30px;
+  margin-right: 10px;
 }
 
 .nextBtn {
-  display: block;
   margin-top: 30px;
-  height: 45px;
   font-size: 18px;
   width: max-content;
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid #fff;
+  border-radius: 15px;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nextBtn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: normal;
 }
