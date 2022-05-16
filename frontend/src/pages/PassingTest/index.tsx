@@ -2,14 +2,13 @@ import axios from "axios"
 import { useState } from "react"
 import { useQuery } from "react-query"
 import { useNavigate, useParams } from "react-router-dom"
+import { API } from "../../api"
 import style from "./style.module.css"
 
 const PassingTestPage = () => {
   const { slug } = useParams()
 
-  const { isLoading, error, data } = useQuery("passing-test", () =>
-    axios.get(`/api/tests/${slug}`).then((res) => res.data)
-  )
+  const { isLoading, error, data } = useQuery("passing-test", API.getPassingTest(slug))
 
   const [current, setCurrent] = useState(0)
   const [score, setScore] = useState(0)

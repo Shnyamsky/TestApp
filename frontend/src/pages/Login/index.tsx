@@ -2,6 +2,7 @@ import axios from "axios"
 import { FC, useState } from "react"
 import { useMutation } from "react-query"
 import { Link, useNavigate } from "react-router-dom"
+import { API } from "../../api"
 import { useAppDispatch } from "../../hooks/store"
 import { userActions } from "../../store/reducers/user"
 import style from "./style.module.css"
@@ -22,11 +23,7 @@ const LoginPage: FC = () => {
     navigate("/tests", { state: { isEditList: false } })
   }
 
-  const loginMutation = useMutation(
-    (loginData: { email: string; password: string }) =>
-      axios.post(`/api/users/login`, { user: loginData }).then((res) => res.data),
-    { onSuccess: onSuccessEnter }
-  )
+  const loginMutation = useMutation(API.loginRequest, { onSuccess: onSuccessEnter })
 
   const enterAsAdmin = () => {
     if (!email || !password) {

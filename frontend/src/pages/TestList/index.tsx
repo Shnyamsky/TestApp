@@ -2,12 +2,11 @@ import axios from "axios"
 import React from "react"
 import { useQuery } from "react-query"
 import { Link, useLocation } from "react-router-dom"
+import { API } from "../../api"
 import style from "./style.module.css"
 
 const TestListPage = () => {
-  const { isLoading, error, data } = useQuery("tests", () =>
-    axios.get("/api/tests").then((res) => res.data)
-  )
+  const { isLoading, error, data } = useQuery("tests", API.getTests)
 
   const location = useLocation() as { state: { isEditList: boolean } }
 
