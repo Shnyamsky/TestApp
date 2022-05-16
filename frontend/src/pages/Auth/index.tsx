@@ -36,6 +36,7 @@ const AuthPage: FC = () => {
 
           <button className={style.authBtn} onClick={enterAsGuest}>Войти</button>
           <Link className={style.authLink} to="/login">Войти как преподаватель</Link>
+          {error}
         </section>
       </main>
     </>

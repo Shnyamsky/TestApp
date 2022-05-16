@@ -18,7 +18,7 @@ const ResultPage = () => {
       },
       body: JSON.stringify({ result: { score, name, testName } })
     })
-  }, [])
+  }, [name, score, testName])
 
   const showAnswer = () => {
     if (score <= 17) return "Вы не набрали достаточно баллов"

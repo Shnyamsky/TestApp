@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useQuery } from "react-query"
 import { useNavigate, useParams } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../hooks/store"
@@ -33,7 +33,7 @@ const EditTestPage = () => {
     if (data) {
       dispatch(editActions.setupTest(data))
     }
-  }, [])
+  }, [data, dispatch])
 
   if (isLoading) {
     return <div>Загрузка...</div>
@@ -95,6 +95,7 @@ const EditTestPage = () => {
           </div>
         ))}
       <button className={style.editBtn} onClick={saveTest}>Coхранить</button>
+      {error}
     </main>
   )
 }

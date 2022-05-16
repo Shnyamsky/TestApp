@@ -51,6 +51,7 @@ const PassingTestPage = () => {
       <button className={style.nextBtn} onClick={onNextBtnClick}>
         Следующий вопрос
       </button>
+      {error}
     </main>
   )
 }
