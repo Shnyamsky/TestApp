@@ -28,12 +28,7 @@ const AuthPage: FC = () => {
         <section>
           Студент
           <label className={style.inputField}>
-            <input
-              type="text"
-              placeholder="Введите Имя"
-              onChange={(e) => changeName(e.target.value)}
-              value={name}
-            />
+            <input type="text" placeholder="Введите Имя" onChange={(e) => changeName(e.target.value)} value={name} />
           </label>
           <label className={style.inputField}>
             <input

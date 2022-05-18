@@ -20,15 +20,10 @@ export const editTestSlice = createSlice({
       title: payload
     }),
 
-    changeQuestionTitle: (
-      state,
-      { payload }: PayloadAction<{ questionIndex: number; text: string }>
-    ) => ({
+    changeQuestionTitle: (state, { payload }: PayloadAction<{ questionIndex: number; text: string }>) => ({
       ...state,
       questions: state.questions.map((question, index) =>
-        index === payload.questionIndex
-          ? { text: payload.text, answers: question.answers }
-          : question
+        index === payload.questionIndex ? { text: payload.text, answers: question.answers } : question
       )
     }),
 

@@ -58,11 +58,7 @@ const EditTestPage = () => {
                   type="text"
                   value={question.text}
                   className={style.inputQues}
-                  onChange={(e) =>
-                    dispatch(
-                      editActions.changeQuestionTitle({ questionIndex, text: e.target.value })
-                    )
-                  }
+                  onChange={(e) => dispatch(editActions.changeQuestionTitle({ questionIndex, text: e.target.value }))}
                 />
               </label>
             </div>
@@ -90,11 +86,7 @@ const EditTestPage = () => {
                     type="number"
                     value={answer.points}
                     className={style.inputNum}
-                    onChange={(e) =>
-                      dispatch(
-                        editActions.changeQuestionTitle({ questionIndex, text: e.target.value })
-                      )
-                    }
+                    onChange={(e) => dispatch(editActions.changeQuestionTitle({ questionIndex, text: e.target.value }))}
                   />
                 </label>
               </div>
