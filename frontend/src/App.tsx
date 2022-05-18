@@ -1,7 +1,6 @@
 import React, { useEffect } from "react"
 import { Route, Routes, useLocation, useNavigate } from "react-router"
 
-import "./App.css"
 import { useAppSelector } from "./hooks/store"
 import Layout from "./layout"
 
@@ -12,6 +11,7 @@ import PassingTestPage from "./pages/PassingTest"
 import ResultPage from "./pages/Result"
 import ResultsTablePage from "./pages/ResultsTable"
 import TestListPage from "./pages/TestList"
+import { AppContainer } from "./styled"
 
 function App() {
   const isAuthorized = useAppSelector((state) => state.user.isAuthorized)
@@ -27,7 +27,7 @@ function App() {
   })
 
   return (
-    <div className="App">
+    <AppContainer>
       <Layout>
         <Routes>
           <Route path="/auth" element={<AuthPage />} />
@@ -39,7 +39,7 @@ function App() {
           <Route path="/results-table" element={<ResultsTablePage />} />
         </Routes>
       </Layout>
-    </div>
+    </AppContainer>
   )
 }
 
