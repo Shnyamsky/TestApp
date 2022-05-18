@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { useQuery } from "react-query"
 import { useNavigate, useParams } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../hooks/store"
@@ -44,9 +43,7 @@ const EditTestPage = () => {
             label={`Вопрос ${questionIndex + 1}`}
             placeholder="Введите вопрос"
             value={question.text}
-            onChange={(e) =>
-              dispatch(editActions.changeQuestionTitle({ questionIndex, text: e.target.value }))
-            }
+            onChange={(e) => dispatch(editActions.changeQuestionTitle({ questionIndex, text: e.target.value }))}
           />
 
           {question.answers.map((answer: any, answerIndex: number) => (
