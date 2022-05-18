@@ -1,15 +1,6 @@
 import { getModelForClass, prop } from "@typegoose/typegoose"
 import { Base } from "@typegoose/typegoose/lib/defaultClasses"
-
-export class Answer {
-  text: string
-  points: number
-}
-
-export class Question {
-  text: string
-  answers: Answer[]
-}
+import { Question } from "../shared/schema/classes"
 
 export class Test {
   @prop({ required: true })
