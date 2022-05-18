@@ -14,7 +14,7 @@ const EditTestPage = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const { isLoading, error, isSuccess, data } = useQuery("passing-test", API.getPassingTest(slug), {
+  const { isLoading, error, data } = useQuery("passing-test", API.getPassingTest(slug), {
     onSuccess: () => dispatch(editActions.setupTest(data))
   })
 

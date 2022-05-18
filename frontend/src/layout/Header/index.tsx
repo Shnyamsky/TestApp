@@ -26,7 +26,17 @@ const Header: FC = () => {
         </Link>
       )}
 
-      {isAdmin && <Link className={style.headerLink} to="/results-table">Результаты</Link>}
+      {isAdmin && (
+        <Link className={style.headerLink} to="/create">
+          Создать
+        </Link>
+      )}
+
+      {isAdmin && (
+        <Link className={style.headerLink} to="/results-table">
+          Результаты
+        </Link>
+      )}
     </header>
   )
 }
