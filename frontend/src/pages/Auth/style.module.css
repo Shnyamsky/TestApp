@@ -21,7 +21,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
-  font-color: #fff;
+  color: #fff;
 }
 
 .inputField input {
@@ -32,19 +32,6 @@
   background-color: rgba(0, 0, 0, 0);
   font-size: 18px;
   color: #fff;
-}
-
-::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-:-moz-placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-:-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.5);
 }
 
 .authBtn {

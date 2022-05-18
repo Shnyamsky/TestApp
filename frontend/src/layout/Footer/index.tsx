@@ -1,8 +1,8 @@
 import { FC } from "react"
-import style from "./style.module.css"
+import * as Styled from "./styled"
 
 const Footer: FC = () => {
-  return <footer className={style.footer}>Приложение для проведения опроса beta_ver.02</footer>
+  return <Styled.Footer>Приложение для проведения опроса beta_ver.02</Styled.Footer>
 }
 
 export default Footer
