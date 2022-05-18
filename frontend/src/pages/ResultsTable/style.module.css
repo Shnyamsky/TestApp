@@ -14,15 +14,18 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   border-bottom: 1px solid #fff;
   padding: 10px;
   text-align: left;
 }
 
-tr:hover {background-color: rgba(255, 255, 255, 0.3);}
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
 
 th {
-  background-color: rgba(255, 255, 255, 0.3);;
+  background-color: rgba(255, 255, 255, 0.3);
   color: white;
 }

@@ -19,7 +19,7 @@ const LoginPage: FC = () => {
       setError(data.message)
     }
 
-    dispatch(userActions.enterAsAdmin({ ...data }))
+    dispatch(userActions.enterAsAdmin({ ...data.user }))
     navigate("/tests", { state: { isEditList: false } })
   }
 

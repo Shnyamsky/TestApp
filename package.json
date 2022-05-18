@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Shnyamsky/TestApp/issues"
   },
-  "homepage": "https://github.com/Shnyamsky/TestApp#readme"
+  "homepage": "https://github.com/Shnyamsky/TestApp#readme",
+  "devDependencies": {
+    "prettier": "^2.6.2"
+  }
 }
