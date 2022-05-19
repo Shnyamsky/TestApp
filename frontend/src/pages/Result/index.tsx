@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { API } from "../../api"
 import { useAppSelector } from "../../hooks/store"
-import style from "./style.module.css"
+import * as Styled from "./styled"
 
 const ResultPage = () => {
   const name = useAppSelector((state) => state.user.name)
@@ -40,13 +40,15 @@ const ResultPage = () => {
   }
 
   return (
-    <main className={style.container}>
+    <Styled.MainCase>
       Результат: {score}
       <div>{showAnswer()}</div>
-      <Link className={style.resLink} to="/tests" state={{ isEditList: false }}>
-        Обратно к опросам
-      </Link>
-    </main>
+      <Styled.LinkCase>
+        <Link to="/tests" state={{ isEditList: false }}>
+          Обратно к опросам
+        </Link>
+      </Styled.LinkCase>
+    </Styled.MainCase>
   )
 }
 

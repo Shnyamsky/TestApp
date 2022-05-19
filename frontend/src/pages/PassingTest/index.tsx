@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useQuery } from "react-query"
 import { useNavigate, useParams } from "react-router-dom"
 import { API } from "../../api"
-import style from "./style.module.css"
+import * as Styled from "./styled"
 
 const PassingTestPage = () => {
   const { slug } = useParams()
@@ -35,24 +35,26 @@ const PassingTestPage = () => {
   }
 
   return (
-    <main className={style.testContainer}>
-      <h4>
+    <Styled.MainCase>
+      <Styled.H4Case>
         {data.title}. Вoпрос {current + 1} / {data.questions.length}
-      </h4>
+      </Styled.H4Case>
       <h3>{data.questions[current].text}</h3>
 
       {data.questions[current].answers.map((answer: { text: string; points: number }) => (
-        <label className={style.answerCase} key={answer.text}>
+        <Styled.AnswerCase key={answer.text}>
           <input type="checkbox" onChange={onChangeCheckbox(answer.points)} />
           {answer.text}
-        </label>
+        </Styled.AnswerCase>
       ))}
 
-      <button className={style.nextBtn} onClick={onNextBtnClick}>
+      <Styled.ButtonCase onClick={onNextBtnClick}>
         Следующий вопрос
-      </button>
-      {error}
-    </main>
+      </Styled.ButtonCase>
+      <Styled.ErrorCase>
+          {error}
+        </Styled.ErrorCase>
+    </Styled.MainCase>
   )
 }
 

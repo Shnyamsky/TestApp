@@ -2,7 +2,7 @@ import React from "react"
 import { useQuery } from "react-query"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { API } from "../../api"
-import style from "./style.module.css"
+import * as Styled from "./styled"
 
 const TestListPage = () => {
   const { isLoading, error, data } = useQuery("tests", API.getTests)
@@ -19,7 +19,7 @@ const TestListPage = () => {
       {isLoading ? (
         <div>Загрузка...</div>
       ) : (
-        <table>
+        <Styled.TableCase>
           <thead>
             <tr>
               <th>Название</th>
@@ -28,14 +28,14 @@ const TestListPage = () => {
           </thead>
           <tbody>
             {data.map((test: { title: string; _id: string; questions: string[]; slug: string }) => (
-              <tr className={style.testItem} onClick={() => navigate(moveTo(test.slug))}>
+              <tr onClick={() => navigate(moveTo(test.slug))}>
                 <td>{test.title}</td>
 
                 <td>{test.questions.length}</td>
               </tr>
             ))}
           </tbody>
-        </table>
+        </Styled.TableCase>
       )}
     </main>
   )
