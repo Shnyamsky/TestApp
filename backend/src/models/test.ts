@@ -1,6 +1,6 @@
 import { getModelForClass, prop } from "@typegoose/typegoose"
 import { Base } from "@typegoose/typegoose/lib/defaultClasses"
-import { Question } from "../shared/schema/classes"
+import { Question } from "../shared/classes"
 
 export class Test {
   @prop({ required: true })

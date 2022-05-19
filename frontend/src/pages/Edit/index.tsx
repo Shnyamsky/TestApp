@@ -13,12 +13,13 @@ const EditTestPage = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const { isLoading, error, data } = useQuery("passing-test", API.getPassingTest(slug), {
-    onSuccess: () => dispatch(editActions.setupTest(data))
+  const { isLoading } = useQuery("passing-test", API.getPassingTest(slug), {
+    onSuccess: (data) => dispatch(editActions.setupTest(data))
   })
 
   const saveTest = () => {
     API.saveTest(test)
+    dispatch(editActions.resetState)
 
     navigate("/tests", { state: { isEditList: false } })
   }
@@ -78,7 +79,6 @@ const EditTestPage = () => {
       <button className={style.editBtn} onClick={saveTest}>
         Coхранить
       </button>
-      {error}
     </main>
   )
 }
