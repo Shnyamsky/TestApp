@@ -4,19 +4,20 @@ import { RouteGenericInterface } from "fastify/types/route"
 
 import { Question } from "../../../shared/schema"
 
-const CreateTestDto = Type.Object({
+const UpdateTestDto = Type.Object({
   test: Type.Object({
     title: Type.String(),
+    slug: Type.String(),
     questions: Type.Array(Question)
   })
 })
 
-export type CreateTestDto = Static<typeof CreateTestDto>
+export type UpdateTestDto = Static<typeof UpdateTestDto>
 
-export interface CreateTest extends RouteGenericInterface {
-  Body: CreateTestDto
+export interface UpdateTest extends RouteGenericInterface {
+  Body: UpdateTestDto
 }
 
-export const CreateTestSchema: FastifySchema = {
-  body: CreateTestDto
+export const UpdateTestSchema: FastifySchema = {
+  body: UpdateTestDto
 }

@@ -1,3 +1,5 @@
 export { ErrorReply } from "./error.schema"
 export { UserReply } from "./user-reply.schema"
 export type { UserReplyType } from "./user-reply.schema"
+export { Answer } from "./answer.schema"
+export { Question } from "./question.schema"

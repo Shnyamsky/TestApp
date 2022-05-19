@@ -1,54 +1,52 @@
-import { useQuery } from "react-query"
-import { useNavigate, useParams } from "react-router-dom"
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+
 import { useAppDispatch, useAppSelector } from "../../hooks/store"
 import { editActions } from "../../store/reducers/editTest"
-import style from "./style.module.css"
-import { API } from "../../api"
 import { AnswerField, InputField } from "../../components"
+import * as Styled from "./styled"
+import { API } from "../../api"
 
-const EditTestPage = () => {
-  const { slug } = useParams()
-
+const CreateTestPage = () => {
   const test = useAppSelector((state) => state.editTest)
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const { isLoading } = useQuery("passing-test", API.getPassingTest(slug), {
-    onSuccess: (data) => dispatch(editActions.setupTest(data))
-  })
-
-  const saveTest = () => {
-    API.saveTest(test)
-    dispatch(editActions.resetState)
+  const createTest = () => {
+    API.createTest(test)
+    dispatch(editActions.resetState())
 
     navigate("/tests", { state: { isEditList: false } })
   }
 
-  if (isLoading) {
-    return <div>Загрузка...</div>
-  }
-
   return (
-    <main className={style.container}>
-      <h2>Редактирование теста</h2>
+    <Styled.Container>
+      <h2>Создание теста</h2>
       <InputField
         label="Название теста:"
         placeholder="Название теста"
         value={test.title}
         onChange={(e) => dispatch(editActions.changeTitle(e.target.value))}
       />
-
       {test.questions?.map((question: any, questionIndex: number) => (
-        <div className={style.editBlock}>
-          <InputField
-            label={`Вопрос ${questionIndex + 1}`}
-            placeholder="Введите вопрос"
-            value={question.text}
-            onChange={(e) => dispatch(editActions.changeQuestionTitle({ questionIndex, text: e.target.value }))}
-          />
+        <div>
+          <Styled.RowCase>
+            <InputField
+              label={`Вопрос ${questionIndex + 1}`}
+              placeholder="Введите вопрос"
+              value={question.text}
+              onChange={(e) => dispatch(editActions.changeQuestionTitle({ questionIndex, text: e.target.value }))}
+            />
+            <button
+              onClick={() => dispatch(editActions.deleteQuestion({ questionIndex }))}
+              disabled={test.questions.length === 1}
+            >
+              &#10006;
+            </button>
+          </Styled.RowCase>
 
           {question.answers.map((answer: any, answerIndex: number) => (
-            <div>
+            <Styled.RowCase>
               <AnswerField
                 label={`Ответ ${answerIndex + 1}`}
                 answerText={answer.text}
@@ -72,15 +70,22 @@ const EditTestPage = () => {
                   )
                 }
               />
-            </div>
+              <button
+                onClick={() => dispatch(editActions.deleteAnswer({ questionIndex, answerIndex }))}
+                disabled={question.answers.length === 1}
+              >
+                &#10006;
+              </button>
+            </Styled.RowCase>
           ))}
+          <a onClick={() => dispatch(editActions.addAnswer(questionIndex))}>Добавить Ответ</a>
         </div>
       ))}
-      <button className={style.editBtn} onClick={saveTest}>
-        Coхранить
-      </button>
-    </main>
+      <a onClick={() => dispatch(editActions.addQuestion())}>Добавить Вопрос</a>
+
+      <button onClick={createTest}>Создать тест</button>
+    </Styled.Container>
   )
 }
 
-export default EditTestPage
+export default CreateTestPage

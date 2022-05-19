@@ -11,6 +11,7 @@ import PassingTestPage from "./pages/PassingTest"
 import ResultPage from "./pages/Result"
 import ResultsTablePage from "./pages/ResultsTable"
 import TestListPage from "./pages/TestList"
+import CreateTestPage from "./pages/CreateTest"
 import { AppContainer } from "./styled"
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/tests" element={<TestListPage />} />
           <Route path="/result" element={<ResultPage />} />
+          <Route path="/create" element={<CreateTestPage />} />
           <Route path="/test/:slug" element={<PassingTestPage />} />
           <Route path="/edit/:slug" element={<EditTestPage />} />
           <Route path="/results-table" element={<ResultsTablePage />} />

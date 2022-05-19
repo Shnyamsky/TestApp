@@ -3,12 +3,12 @@ export type EditTestState = {
   questions: Question[]
 }
 
-type Question = {
+export type Question = {
   text: string
   answers: Answer[]
 }
 
-type Answer = {
+export type Answer = {
   text: string
   points: number
 }

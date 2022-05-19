@@ -32,6 +32,12 @@ const Header: FC = () => {
 
       {isAdmin && (
         <Styled.HeaderLinkCase>
+          <Link to="/create">Cоздать</Link>
+        </Styled.HeaderLinkCase>
+      )}
+
+      {isAdmin && (
+        <Styled.HeaderLinkCase>
           <Link to="/results-table">Результаты</Link>
         </Styled.HeaderLinkCase>
       )}
