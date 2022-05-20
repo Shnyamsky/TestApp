@@ -3,13 +3,13 @@ import { Base, TimeStamps } from "@typegoose/typegoose/lib/defaultClasses"
 
 export class Result extends TimeStamps {
   @prop({ required: true })
-  public name: string
+  public name!: string
 
   @prop({ required: true })
-  public testName: string
+  public testName!: string
 
   @prop({ required: true })
-  public score: number
+  public score!: number
 }
 
 export interface Result extends Base {}
