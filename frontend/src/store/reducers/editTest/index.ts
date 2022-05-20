@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { Answer, EditTestState, Question } from "./types"
 
 const EMPTY_ANSWER: Answer = { text: "", points: 0 }
-const EMPTY_QUESTION: Question = { text: "", answers: [EMPTY_ANSWER] }
+const EMPTY_QUESTION: Question = { text: "", answersType: "checkbox", answers: [EMPTY_ANSWER] }
 
 const initialState: EditTestState = {
   title: "",
@@ -12,6 +12,7 @@ const initialState: EditTestState = {
 type AnswerPayload = { questionIndex: number; answerIndex: number }
 type ChangeAnswerTitlePayload = { questionIndex: number; answerIndex: number; text: string }
 type ChangeAnswerPointsPayload = { questionIndex: number; answerIndex: number; points: number }
+type ChangeQuestionTypePayload = { questionIndex: number; value: "checkbox" | "radio" }
 
 export const editTestSlice = createSlice({
   name: "editTest",
@@ -26,6 +27,7 @@ export const editTestSlice = createSlice({
         state.questions[payload].answers.push(EMPTY_ANSWER)
       }
     },
+
     deleteAnswer: (state, { payload }: PayloadAction<AnswerPayload>) => ({
       ...state,
       questions: state.questions.map((question, questionIndex) =>
@@ -48,10 +50,14 @@ export const editTestSlice = createSlice({
       title: payload
     }),
 
+    changeAnswersType: (state, { payload }: PayloadAction<ChangeQuestionTypePayload>) => {
+      state.questions[payload.questionIndex].answersType = payload.value
+    },
+
     changeQuestionTitle: (state, { payload }: PayloadAction<{ questionIndex: number; text: string }>) => ({
       ...state,
       questions: state.questions.map((question, index) =>
-        index === payload.questionIndex ? { text: payload.text, answers: question.answers } : question
+        index === payload.questionIndex ? { ...question, text: payload.text, answers: question.answers } : question
       )
     }),
 

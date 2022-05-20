@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 import { useAppDispatch, useAppSelector } from "../../hooks/store"
@@ -43,6 +42,17 @@ const CreateTestPage = () => {
             >
               &#10006;
             </button>
+
+            <select
+              onChange={(e) =>
+                dispatch(
+                  editActions.changeAnswersType({ value: e.target.value as "checkbox" | "radio", questionIndex })
+                )
+              }
+            >
+              <option value="radio">Один правильный</option>
+              <option value="checkbox">Несколько правильных</option>
+            </select>
           </Styled.RowCase>
 
           {question.answers.map((answer: any, answerIndex: number) => (
