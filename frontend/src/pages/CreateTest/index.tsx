@@ -44,6 +44,7 @@ const CreateTestPage = () => {
             </button>
 
             <select
+              value={question.answersType}
               onChange={(e) =>
                 dispatch(
                   editActions.changeAnswersType({ value: e.target.value as "checkbox" | "radio", questionIndex })
