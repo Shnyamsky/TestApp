@@ -13,16 +13,29 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    enterAsGuest: (state, { payload }: PayloadAction<EnterPayload>) => ({
+    enterAsGuest: (state, { payload }: PayloadAction<EnterPayload>) => {
+      sessionStorage.setItem("auth", JSON.stringify({ ...payload, isAdmin: false }))
+
+      return {
+        ...state,
+        ...payload,
+        isAuthorized: true
+      }
+    },
+    enterAsAdmin: (state, { payload }: PayloadAction<EnterPayload>) => {
+      sessionStorage.setItem("auth", JSON.stringify({ ...payload, isAdmin: true }))
+
+      return {
+        ...state,
+        ...payload,
+        isAuthorized: true,
+        isAdmin: true
+      }
+    },
+    loginFromStorage: (state, { payload }: PayloadAction<EnterPayload & { isAdmin: boolean }>) => ({
       ...state,
       ...payload,
       isAuthorized: true
-    }),
-    enterAsAdmin: (state, { payload }: PayloadAction<EnterPayload>) => ({
-      ...state,
-      ...payload,
-      isAuthorized: true,
-      isAdmin: true
     })
   }
 })
