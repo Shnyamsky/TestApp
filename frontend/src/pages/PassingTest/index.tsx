@@ -42,11 +42,11 @@ const PassingTestPage = () => {
       <h3>{data.questions[current].text}</h3>
 
       {data.questions[current].answers.map((answer: { text: string; points: number }) => (
-        <Styled.AnswerCase key={answer.text}>
+        <Styled.Label key={answer.text}>
           {console.log(data.questions[current].answersType, "answersType")}
           <input type={data.questions[current].answersType} onChange={onChangeCheckbox(answer.points)} name="answers" />
           {answer.text}
-        </Styled.AnswerCase>
+        </Styled.Label>
       ))}
 
       <Styled.Button onClick={onNextBtnClick}>

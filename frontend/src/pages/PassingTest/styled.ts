@@ -12,7 +12,7 @@ export const MainCase = styled.main`
   align-items: flex-start;
 `
 
-export const AnswerCase = styled.label`
+export const Label = styled.label`
   font-size: 18px;
 
   input {
