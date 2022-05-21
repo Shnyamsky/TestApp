@@ -1,4 +1,3 @@
-import axios from "axios"
 import { FC, useState } from "react"
 import { useMutation } from "react-query"
 import { Link, useNavigate } from "react-router-dom"

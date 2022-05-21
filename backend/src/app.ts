@@ -19,8 +19,6 @@ const app: FastifyPluginAsync<AppOptions> = async (fastify, opts): Promise<void>
     ignorePattern: /.*(test|spec|schema).js/,
     options: opts
   })
-
-  console.log("APP STARTED", process.env.port)
 }
 
 export default app

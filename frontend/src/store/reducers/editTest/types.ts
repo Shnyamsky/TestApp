@@ -6,6 +6,7 @@ export type EditTestState = {
 export type Question = {
   text: string
   answers: Answer[]
+  answersType?: "checkbox" | "radio"
 }
 
 export type Answer = {
