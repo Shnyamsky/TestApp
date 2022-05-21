@@ -43,7 +43,8 @@ const PassingTestPage = () => {
 
       {data.questions[current].answers.map((answer: { text: string; points: number }) => (
         <Styled.AnswerCase key={answer.text}>
-          <input type="checkbox" onChange={onChangeCheckbox(answer.points)} />
+          {console.log(data.questions[current].answersType, "answersType")}
+          <input type={data.questions[current].answersType} onChange={onChangeCheckbox(answer.points)} name="answers" />
           {answer.text}
         </Styled.AnswerCase>
       ))}
