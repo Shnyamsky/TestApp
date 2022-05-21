@@ -1,33 +1,47 @@
 import { FC } from "react"
 import { Link } from "react-router-dom"
 import { useAppSelector } from "../../hooks/store"
-import style from "./style.module.css"
+import * as Styled from "./styled"
 
 const Header: FC = () => {
   const { name, surName, isAuthorized, isAdmin } = useAppSelector((state) => state.user)
 
   return (
-    <header className={style.header}>
+    <Styled.Header>
       {isAuthorized && (
-        <div className={style.headerData}>
+        <Styled.UserInfo>
           {name} {surName}
-        </div>
+        </Styled.UserInfo>
       )}
 
       {isAuthorized && (
-        <Link className={style.headerLink} to="/tests" state={{ isEditList: false }}>
-          Опросы
-        </Link>
+        <Styled.HeaderLinkCase>
+          <Link to="/tests" state={{ isEditList: false }}>
+            Опросы
+          </Link>
+        </Styled.HeaderLinkCase>
       )}
 
       {isAdmin && (
-        <Link className={style.headerLink} to="/tests" state={{ isEditList: true }}>
-          Редактирование
-        </Link>
+        <Styled.HeaderLinkCase>
+          <Link to="/tests" state={{ isEditList: true }}>
+            Редактирование
+          </Link>
+        </Styled.HeaderLinkCase>
       )}
 
-      {isAdmin && <Link className={style.headerLink} to="/results-table">Результаты</Link>}
-    </header>
+      {isAdmin && (
+        <Styled.HeaderLinkCase>
+          <Link to="/create">Cоздать</Link>
+        </Styled.HeaderLinkCase>
+      )}
+
+      {isAdmin && (
+        <Styled.HeaderLinkCase>
+          <Link to="/results-table">Результаты</Link>
+        </Styled.HeaderLinkCase>
+      )}
+    </Styled.Header>
   )
 }
 

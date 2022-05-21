@@ -5,7 +5,7 @@ services:
     build: ./frontend
     container_name: test-app-frontend
     command: serve -s build -l 3000
-    restart: unless-stopped
+    restart: always
     ports:
       - "3000:3000"
     environment:
@@ -19,7 +19,7 @@ services:
     build: ./backend
     container_name: test-app-backend
     command: npm run start
-    restart: unless-stopped
+    restart: always
     ports:
       - "3001:3001"
     environment:

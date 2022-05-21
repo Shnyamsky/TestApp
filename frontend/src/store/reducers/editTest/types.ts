@@ -3,12 +3,13 @@ export type EditTestState = {
   questions: Question[]
 }
 
-type Question = {
+export type Question = {
   text: string
   answers: Answer[]
+  answersType?: "checkbox" | "radio"
 }
 
-type Answer = {
+export type Answer = {
   text: string
   points: number
 }

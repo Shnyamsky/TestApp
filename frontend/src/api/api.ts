@@ -9,8 +9,10 @@ export const getPassingTest = (slug: string) => () => {
 
 export const saveTest = (test) => axios.put(`/api/tests`, { test })
 
+export const createTest = (test) => axios.post(`/api/tests`, { test })
+
+export const getTests = () => axios.get("/api/tests").then((res) => res.data)
+
 export const saveResult = (result) => axios.post(`/api/result`, { result })
 
 export const getResults = () => axios.get("/api/result").then((res) => res.data)
-
-export const getTests = () => axios.get("/api/tests").then((res) => res.data)

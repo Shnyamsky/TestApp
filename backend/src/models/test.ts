@@ -1,25 +1,35 @@
 import { getModelForClass, prop } from "@typegoose/typegoose"
 import { Base } from "@typegoose/typegoose/lib/defaultClasses"
+import { AnswersType } from "../shared/types"
 
-export class Answer {
-  text: string
-  points: number
+class Answer {
+  @prop({ required: true })
+  public text!: string
+
+  @prop({ required: true })
+  public points!: number
 }
 
-export class Question {
-  text: string
-  answers: Answer[]
+class Question {
+  @prop({ required: true })
+  public text!: string
+
+  @prop({ enum: AnswersType, default: AnswersType.checkbox })
+  public answersType?: AnswersType
+
+  @prop({ required: true, type: () => Answer })
+  public answers!: Answer[]
 }
 
 export class Test {
   @prop({ required: true })
-  public title: string
+  public title!: string
 
   @prop({ required: true, unique: true })
-  public slug: string
+  public slug!: string
 
-  @prop({ default: [], _id: false })
-  public questions: Question[]
+  @prop({ default: [], _id: false, type: () => Question })
+  public questions!: Question[]
 }
 
 export interface Test extends Base {}

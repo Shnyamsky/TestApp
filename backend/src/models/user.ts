@@ -3,7 +3,7 @@ import { Base, TimeStamps } from "@typegoose/typegoose/lib/defaultClasses"
 
 export class User extends TimeStamps {
   @prop({ required: true, unique: true })
-  public email: string
+  public email!: string
 
   @prop({ default: "" })
   public name!: string

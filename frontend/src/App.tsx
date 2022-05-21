@@ -13,6 +13,8 @@ import ResultPage from "./pages/Result"
 import ResultsTablePage from "./pages/ResultsTable"
 import TestListPage from "./pages/TestList"
 import { userActions } from "./store/reducers/user"
+import CreateTestPage from "./pages/CreateTest"
+import { AppContainer } from "./styled"
 
 const useActions = () => {
   const dispatch = useAppDispatch()
@@ -44,19 +46,20 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
+    <AppContainer>
       <Layout>
         <Routes>
           <Route path="/auth" element={<AuthPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/tests" element={<TestListPage />} />
           <Route path="/result" element={<ResultPage />} />
+          <Route path="/create" element={<CreateTestPage />} />
           <Route path="/test/:slug" element={<PassingTestPage />} />
           <Route path="/edit/:slug" element={<EditTestPage />} />
           <Route path="/results-table" element={<ResultsTablePage />} />
         </Routes>
       </Layout>
-    </div>
+    </AppContainer>
   )
 }
 

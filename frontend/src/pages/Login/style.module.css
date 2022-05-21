@@ -4,7 +4,7 @@
   display: flex;
   gap: 50px;
 }
-  
+
 .loginRoot section {
   width: 100%;
   padding: 20px;
@@ -15,13 +15,13 @@
   border-radius: 15px;
   background: rgba(0, 0, 0, 0.3);
 }
-  
+
 .inputField {
   width: 100%;
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
-  font-color: #fff;
+  color: #fff;
 }
 
 .inputField input {

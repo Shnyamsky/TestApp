@@ -29,7 +29,8 @@
     "fastify-sensible": "^3.1.2",
     "mongodb": "^4.4.0",
     "mongoose": "^6.2.3",
-    "ramda": "^0.28.0"
+    "ramda": "^0.28.0",
+    "slugify": "^1.6.5"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",

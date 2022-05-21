@@ -3,11 +3,12 @@ import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router-dom"
 
-import "./index.css"
 import App from "./App"
 import { store } from "./store"
 import * as serviceWorker from "./serviceWorker"
 import { QueryClient, QueryClientProvider } from "react-query"
+import { globalStyles } from "./styled"
+import { Global } from "@emotion/react"
 
 const queryClient = new QueryClient()
 
@@ -16,6 +17,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
+          <Global styles={globalStyles} />
           <App />
         </QueryClientProvider>
       </Provider>
