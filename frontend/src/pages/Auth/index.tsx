@@ -27,25 +27,25 @@ const AuthPage: FC = () => {
       <Styled.MainCase>
         <Styled.SectionCase>
           Студент
-          <Styled.LabelCase>
-            <input
+          <Styled.Label>
+            <Styled.Input
               type="text"
               placeholder="Введите Имя"
               onChange={(e) => changeName(e.target.value)}
               value={name}
             />
-          </Styled.LabelCase>
-          <Styled.LabelCase>
-            <input
+          </Styled.Label>
+          <Styled.Label>
+            <Styled.Input
               type="text"
               placeholder="Введите Фамилию"
               onChange={(e) => changeSurName(e.target.value)}
               value={surName}
             />
-          </Styled.LabelCase>
-          <Styled.ButtonCase onClick={enterAsGuest}>
+          </Styled.Label>
+          <Styled.Button onClick={enterAsGuest}>
             Войти
-          </Styled.ButtonCase>
+          </Styled.Button>
           <Styled.LinkCase>
             <Link to="/login">
               Войти как преподаватель

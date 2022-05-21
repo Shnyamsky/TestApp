@@ -44,25 +44,25 @@ const LoginPage: FC = () => {
       <Styled.MainCase>
         <Styled.SectionCase>
           Преподаватель
-          <Styled.LabelCase>
-            <input
+          <Styled.Label>
+            <Styled.Input
               type="email"
               placeholder="Введите email"
               onChange={(e) => changeEmail(e.target.value)}
               value={email}
             />
-          </Styled.LabelCase>
-          <Styled.LabelCase>
-            <input
+          </Styled.Label>
+          <Styled.Label>
+            <Styled.Input
               type="password"
               placeholder="Введите пароль"
               onChange={(e) => changePass(e.target.value)}
               value={password}
             />
-          </Styled.LabelCase>
-          <Styled.ButtonCase onClick={enterAsAdmin}>
+          </Styled.Label>
+          <Styled.Button onClick={enterAsAdmin}>
             Войти
-          </Styled.ButtonCase>
+          </Styled.Button>
           <Styled.LinkCase>
             <Link to="/auth">
               Войти как студент

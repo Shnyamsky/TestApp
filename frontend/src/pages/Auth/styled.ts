@@ -4,7 +4,6 @@ export const MainCase = styled.main`
   max-width: 500px;
   width: 100%;
   display: flex;
-  gap: 50px;
 `
 
 export const SectionCase = styled.section`
@@ -18,24 +17,24 @@ export const SectionCase = styled.section`
   background: rgba(0, 0, 0, 0.3);
 `
 
-export const LabelCase = styled.label`
+export const Label = styled.label`
   width: 100%;
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
   color: #fff;
-  
-  input {
-    padding: 10px;
-    outline: none;
-    border: none;
-    border-bottom: 2px solid #fff;
-    background-color: rgba(0, 0, 0, 0);
-    font-size: 18px;
-    color: #fff;
-  }
+`
 
-  input::placeholder {
+export const Input = styled.input`
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #fff;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 18px;
+  color: #fff;
+
+  &::placeholder {
     color: rgba(255, 255, 255, 0.5)
   }
 `
@@ -50,7 +49,7 @@ a {
 }
 `
 
-export const ButtonCase = styled.button`
+export const Button = styled.button`
   font-size: 18px;
   width: max-content;
   background-color: rgba(255, 255, 255, 0);

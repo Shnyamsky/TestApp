@@ -20,7 +20,7 @@ export const AnswerCase = styled.label`
   }
 `
 
-export const ButtonCase = styled.button`
+export const Button = styled.button`
   margin-top: 30px;
   font-size: 18px;
   width: max-content;
@@ -38,7 +38,7 @@ export const ButtonCase = styled.button`
   }
 `
 
-export const H4Case = styled.h4`
+export const H4 = styled.h4`
   font-size: 20px;
   font-weight: normal;
 `

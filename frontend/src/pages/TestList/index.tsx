@@ -28,9 +28,8 @@ const TestListPage = () => {
           </thead>
           <tbody>
             {data.map((test: { title: string; _id: string; questions: string[]; slug: string }) => (
-              <tr onClick={() => navigate(moveTo(test.slug))}>
-                <td>{test.title}</td>
-
+              <tr>
+                <td><Link to={moveTo(test.slug)}>{test.title}</Link></td>
                 <td>{test.questions.length}</td>
               </tr>
             ))}

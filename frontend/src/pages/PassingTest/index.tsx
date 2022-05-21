@@ -36,9 +36,9 @@ const PassingTestPage = () => {
 
   return (
     <Styled.MainCase>
-      <Styled.H4Case>
+      <Styled.H4>
         {data.title}. Вoпрос {current + 1} / {data.questions.length}
-      </Styled.H4Case>
+      </Styled.H4>
       <h3>{data.questions[current].text}</h3>
 
       {data.questions[current].answers.map((answer: { text: string; points: number }) => (
@@ -48,9 +48,9 @@ const PassingTestPage = () => {
         </Styled.AnswerCase>
       ))}
 
-      <Styled.ButtonCase onClick={onNextBtnClick}>
+      <Styled.Button onClick={onNextBtnClick}>
         Следующий вопрос
-      </Styled.ButtonCase>
+      </Styled.Button>
       <Styled.ErrorCase>
           {error}
         </Styled.ErrorCase>
