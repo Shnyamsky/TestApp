@@ -1,10 +1,13 @@
-import axios from "axios"
 import { useQuery } from "react-query"
+import { Link, useParams } from "react-router-dom"
+
 import { API } from "../../api"
+import { Result } from "../../types"
 import * as Styled from "./styled"
 
 const ResultsTablePage = () => {
-  const { isLoading, error, data } = useQuery("results", API.getResults)
+  const { slug } = useParams()
+  const { isLoading, data } = useQuery("results", API.getCurrentResults(slug))
 
   if (isLoading) {
     return <div>Загрузка...</div>
@@ -17,21 +20,22 @@ const ResultsTablePage = () => {
         <thead>
           <tr>
             <th>Имя</th>
-            <th>Опрос</th>
             <th>Результат</th>
+            <th />
           </tr>
         </thead>
         <tbody>
-          {data.map((result: { name: string; testName: string; score: number }, index: number) => (
+          {data.map((result: Result, index: number) => (
             <tr key={index}>
               <td>{result.name}</td>
-              <td>{result.testName}</td>
               <td>{result.score}</td>
+              <td>{result.text}</td>
             </tr>
           ))}
         </tbody>
       </Styled.TableCase>
-      </Styled.MainCase>
+      <Link to="/tests">Обратно к опросам</Link>
+    </Styled.MainCase>
   )
 }
 

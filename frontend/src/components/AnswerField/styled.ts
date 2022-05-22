@@ -16,18 +16,3 @@ export const AnswerInput = styled.input`
   border: 2px solid #fff;
   border-radius: 15px;
 `
-
-export const PointsInput = styled.input`
-  width: 50px;
-  margin: 5px;
-  background-color: #fff;
-  color: #000;
-
-  height: 40px;
-  font-size: 18px;
-  line-height: 20px;
-  padding: 10px;
-  outline: none;
-  border: 2px solid #fff;
-  border-radius: 15px;
-`

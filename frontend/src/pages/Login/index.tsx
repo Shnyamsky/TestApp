@@ -19,10 +19,10 @@ const LoginPage: FC = () => {
     }
 
     dispatch(userActions.enterAsAdmin({ ...data.user }))
-    navigate("/tests", { state: { isEditList: false } })
+    navigate("/tests")
   }
 
-  const loginMutation = useMutation(API.loginRequest, { onSuccess: onSuccessEnter })
+  const loginMutation = useMutation(API.login, { onSuccess: onSuccessEnter })
 
   const enterAsAdmin = () => {
     if (!email || !password) {
@@ -59,13 +59,9 @@ const LoginPage: FC = () => {
               value={password}
             />
           </Styled.Label>
-          <Styled.Button onClick={enterAsAdmin}>
-            Войти
-          </Styled.Button>
+          <Styled.Button onClick={enterAsAdmin}>Войти</Styled.Button>
           <Styled.LinkCase>
-            <Link to="/auth">
-              Войти как студент
-            </Link>
+            <Link to="/auth">Войти как студент</Link>
           </Styled.LinkCase>
         </Styled.SectionCase>
       </Styled.MainCase>

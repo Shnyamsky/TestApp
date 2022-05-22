@@ -19,7 +19,7 @@ const AuthPage: FC = () => {
 
     setError("")
     dispatch(userActions.enterAsGuest({ name, surName }))
-    navigate("/tests", { state: { isEditList: false } })
+    navigate("/tests")
   }
 
   return (
@@ -43,19 +43,13 @@ const AuthPage: FC = () => {
               value={surName}
             />
           </Styled.Label>
-          <Styled.Button onClick={enterAsGuest}>
-            Войти
-          </Styled.Button>
+          <Styled.Button onClick={enterAsGuest}>Войти</Styled.Button>
           <Styled.LinkCase>
-            <Link to="/login">
-              Войти как преподаватель
-            </Link>
+            <Link to="/login">Войти как преподаватель</Link>
           </Styled.LinkCase>
         </Styled.SectionCase>
-        
-        <Styled.ErrorCase>
-          {error}
-        </Styled.ErrorCase>
+
+        <Styled.ErrorCase>{error}</Styled.ErrorCase>
       </Styled.MainCase>
     </>
   )

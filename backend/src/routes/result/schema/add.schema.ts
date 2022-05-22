@@ -6,7 +6,8 @@ const AddResultDto = Type.Object({
   result: Type.Object({
     name: Type.String(),
     score: Type.Number(),
-    testName: Type.String()
+    testSlug: Type.String(),
+    text: Type.String()
   })
 })
 

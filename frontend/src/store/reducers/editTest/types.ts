@@ -1,15 +1,3 @@
-export type EditTestState = {
-  title: string
-  questions: Question[]
-}
+import { Test } from "../../../types"
 
-export type Question = {
-  text: string
-  answers: Answer[]
-  answersType?: "checkbox" | "radio"
-}
-
-export type Answer = {
-  text: string
-  points: number
-}
+export type EditTestState = Omit<Test, "slug">
