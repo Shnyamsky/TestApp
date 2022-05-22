@@ -1,4 +1,6 @@
-.container {
+import styled from "@emotion/styled"
+
+export const MainCase = styled.main`
   border: 2px solid #fff;
   border-radius: 15px;
   background: rgba(0, 0, 0, 0.3);
@@ -8,12 +10,14 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-}
+`
 
-.resLink {
-  margin-top: 15px;
-  width: 100%;
-  font-size: 20px;
-  color: #fff;
-  display: inline-block;
+export const LinkCase = styled.div`
+a {
+    margin-top: 15px;
+    width: 100%;
+    font-size: 20px;
+    color: #fff;
+    display: inline-block;
 }
+`

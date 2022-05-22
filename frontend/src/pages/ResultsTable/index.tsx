@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useQuery } from "react-query"
 import { API } from "../../api"
-import style from "./style.module.css"
+import * as Styled from "./styled"
 
 const ResultsTablePage = () => {
   const { isLoading, error, data } = useQuery("results", API.getResults)
@@ -11,9 +11,9 @@ const ResultsTablePage = () => {
   }
 
   return (
-    <main className={style.container}>
+    <Styled.MainCase>
       Таблица результатов
-      <table>
+      <Styled.TableCase>
         <thead>
           <tr>
             <th>Имя</th>
@@ -30,8 +30,8 @@ const ResultsTablePage = () => {
             </tr>
           ))}
         </tbody>
-      </table>
-    </main>
+      </Styled.TableCase>
+      </Styled.MainCase>
   )
 }
 

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { API } from "../../api"
 import { useAppDispatch } from "../../hooks/store"
 import { userActions } from "../../store/reducers/user"
-import style from "./style.module.css"
+import * as Styled from "./styled"
 
 const LoginPage: FC = () => {
   const [email, changeEmail] = useState("")
@@ -37,36 +37,38 @@ const LoginPage: FC = () => {
   return (
     <>
       {(error || loginMutation.data?.message) && (
-        <div className={style.error}>{error || (loginMutation.data as any).message}</div>
+        <Styled.ErrorCase>{error || (loginMutation.data as any).message}</Styled.ErrorCase>
       )}
 
-      <main className={style.loginRoot}>
-        <section>
+      <Styled.MainCase>
+        <Styled.SectionCase>
           Преподаватель
-          <label className={style.inputField}>
-            <input
+          <Styled.Label>
+            <Styled.Input
               type="email"
               placeholder="Введите email"
               onChange={(e) => changeEmail(e.target.value)}
               value={email}
             />
-          </label>
-          <label className={style.inputField}>
-            <input
+          </Styled.Label>
+          <Styled.Label>
+            <Styled.Input
               type="password"
               placeholder="Введите пароль"
               onChange={(e) => changePass(e.target.value)}
               value={password}
             />
-          </label>
-          <button className={style.loginBtn} onClick={enterAsAdmin}>
+          </Styled.Label>
+          <Styled.Button onClick={enterAsAdmin}>
             Войти
-          </button>
-          <Link className={style.loginLink} to="/auth">
-            Войти как студент
-          </Link>
-        </section>
-      </main>
+          </Styled.Button>
+          <Styled.LinkCase>
+            <Link to="/auth">
+              Войти как студент
+            </Link>
+          </Styled.LinkCase>
+        </Styled.SectionCase>
+      </Styled.MainCase>
     </>
   )
 }

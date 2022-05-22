@@ -1,11 +1,12 @@
-.loginRoot {
+import styled from "@emotion/styled"
+
+export const MainCase = styled.main`
   max-width: 500px;
   width: 100%;
   display: flex;
-  gap: 50px;
-}
+`
 
-.loginRoot section {
+export const SectionCase = styled.section`
   width: 100%;
   padding: 20px;
   border: 2px solid #fff;
@@ -14,17 +15,17 @@
   align-items: center;
   border-radius: 15px;
   background: rgba(0, 0, 0, 0.3);
-}
+`
 
-.inputField {
+export const Label = styled.label`
   width: 100%;
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
   color: #fff;
-}
+`
 
-.inputField input {
+export const Input = styled.input`
   padding: 10px;
   outline: none;
   border: none;
@@ -32,22 +33,23 @@
   background-color: rgba(0, 0, 0, 0);
   font-size: 18px;
   color: #fff;
-}
 
-::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-:-moz-placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-:-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.5)
+  }
+`
 
-.loginBtn {
+export const LinkCase = styled.div`
+a {
+  margin-top: 15px;
+  width: 100%;
+  font-size: 15px;
+  color: #fff;
+  display: inline-block;
+}
+`
+
+export const Button = styled.button`
   font-size: 18px;
   width: max-content;
   background-color: rgba(255, 255, 255, 0);
@@ -58,19 +60,12 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-}
-.authBtn:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-}
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+`
 
-.loginLink {
-  margin-top: 15px;
-  width: 100%;
-  font-size: 15px;
-  color: #fff;
-  display: inline-block;
-}
-
-.error {
+export const ErrorCase = styled.div`
   color: red;
-}
+`

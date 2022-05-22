@@ -2,7 +2,7 @@ import { FC, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "../../hooks/store"
 import { userActions } from "../../store/reducers/user"
-import style from "./style.module.css"
+import * as Styled from "./styled"
 
 const AuthPage: FC = () => {
   const [name, changeName] = useState("")
@@ -24,29 +24,39 @@ const AuthPage: FC = () => {
 
   return (
     <>
-      <main className={style.authRoot}>
-        <section>
+      <Styled.MainCase>
+        <Styled.SectionCase>
           Студент
-          <label className={style.inputField}>
-            <input type="text" placeholder="Введите Имя" onChange={(e) => changeName(e.target.value)} value={name} />
-          </label>
-          <label className={style.inputField}>
-            <input
+          <Styled.Label>
+            <Styled.Input
+              type="text"
+              placeholder="Введите Имя"
+              onChange={(e) => changeName(e.target.value)}
+              value={name}
+            />
+          </Styled.Label>
+          <Styled.Label>
+            <Styled.Input
               type="text"
               placeholder="Введите Фамилию"
               onChange={(e) => changeSurName(e.target.value)}
               value={surName}
             />
-          </label>
-          <button className={style.authBtn} onClick={enterAsGuest}>
+          </Styled.Label>
+          <Styled.Button onClick={enterAsGuest}>
             Войти
-          </button>
-          <Link className={style.authLink} to="/login">
-            Войти как преподаватель
-          </Link>
-        </section>
-        {error}
-      </main>
+          </Styled.Button>
+          <Styled.LinkCase>
+            <Link to="/login">
+              Войти как преподаватель
+            </Link>
+          </Styled.LinkCase>
+        </Styled.SectionCase>
+        
+        <Styled.ErrorCase>
+          {error}
+        </Styled.ErrorCase>
+      </Styled.MainCase>
     </>
   )
 }

@@ -1,4 +1,6 @@
-.testContainer {
+import styled from "@emotion/styled"
+
+export const MainCase = styled.main`
   border: 2px solid #fff;
   border-radius: 15px;
   background: rgba(0, 0, 0, 0.3);
@@ -8,17 +10,17 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-}
+`
 
-.answerCase {
+export const Label = styled.label`
   font-size: 18px;
-}
 
-.answerCase input {
-  margin-right: 10px;
-}
+  input {
+    margin-right: 10px;
+  }
+`
 
-.nextBtn {
+export const Button = styled.button`
   margin-top: 30px;
   font-size: 18px;
   width: max-content;
@@ -30,13 +32,17 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-}
 
-.nextBtn:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-}
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+`
 
-h4 {
+export const H4 = styled.h4`
   font-size: 20px;
   font-weight: normal;
-}
+`
+
+export const ErrorCase = styled.div`
+  color: red;
+`
