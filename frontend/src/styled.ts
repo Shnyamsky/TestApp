@@ -10,7 +10,6 @@ export const AppContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  font-size: calc(10px + 2vmin);
   color: white;
 `
 
@@ -21,10 +20,16 @@ export const globalStyles = css`
       "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: 14px;
+    line-height: 18px;
   }
 
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
+
+  a {
+    color: white;
   }
 
   * {

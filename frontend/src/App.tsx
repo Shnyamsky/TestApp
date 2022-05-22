@@ -1,19 +1,17 @@
 import React, { useEffect } from "react"
 import { Route, Routes, useLocation, useNavigate } from "react-router"
 
-import "./App.css"
 import { useAppDispatch, useAppSelector } from "./hooks/store"
 import Layout from "./layout"
 
 import AuthPage from "./pages/Auth"
 import LoginPage from "./pages/Login"
-import EditTestPage from "./pages/Edit"
 import PassingTestPage from "./pages/PassingTest"
 import ResultPage from "./pages/Result"
 import ResultsTablePage from "./pages/ResultsTable"
 import TestListPage from "./pages/TestList"
 import { userActions } from "./store/reducers/user"
-import CreateTestPage from "./pages/CreateTest"
+import EditTestPage from "./pages/EditTest"
 import { AppContainer } from "./styled"
 
 const useActions = () => {
@@ -35,8 +33,10 @@ function App() {
 
     if (!isAuthorized && notAuthOrLoginPage) {
       const authStorage = sessionStorage.getItem("auth")
+
       if (authStorage) {
         actions.loginFromStorage(JSON.parse(authStorage))
+        navigate("/tests")
 
         return
       }
@@ -52,11 +52,11 @@ function App() {
           <Route path="/auth" element={<AuthPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/tests" element={<TestListPage />} />
-          <Route path="/result" element={<ResultPage />} />
-          <Route path="/create" element={<CreateTestPage />} />
-          <Route path="/test/:slug" element={<PassingTestPage />} />
+          <Route path="/edit" element={<EditTestPage />} />
           <Route path="/edit/:slug" element={<EditTestPage />} />
-          <Route path="/results-table" element={<ResultsTablePage />} />
+          <Route path="/test/:slug" element={<PassingTestPage />} />
+          <Route path="/result" element={<ResultPage />} />
+          <Route path="/result/:slug" element={<ResultsTablePage />} />
         </Routes>
       </Layout>
     </AppContainer>

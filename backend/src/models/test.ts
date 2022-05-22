@@ -2,6 +2,14 @@ import { getModelForClass, prop } from "@typegoose/typegoose"
 import { Base } from "@typegoose/typegoose/lib/defaultClasses"
 import { AnswersType } from "../shared/types"
 
+class Condition {
+  @prop({ required: true })
+  public score!: number
+
+  @prop({ required: true })
+  public text!: string
+}
+
 class Answer {
   @prop({ required: true })
   public text!: string
@@ -30,6 +38,9 @@ export class Test {
 
   @prop({ default: [], _id: false, type: () => Question })
   public questions!: Question[]
+
+  @prop({ default: [], _id: false, type: () => Condition })
+  public conditions!: Condition[]
 }
 
 export interface Test extends Base {}

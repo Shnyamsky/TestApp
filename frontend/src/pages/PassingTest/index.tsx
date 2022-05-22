@@ -1,4 +1,3 @@
-import axios from "axios"
 import { useState } from "react"
 import { useQuery } from "react-query"
 import { useNavigate, useParams } from "react-router-dom"
@@ -22,7 +21,7 @@ const PassingTestPage = () => {
   const onNextBtnClick = () => {
     const next = current + 1
     if (next === data.questions.length) {
-      navigate("/result", { state: { score, testName: data.title }, replace: true })
+      navigate("/result", { state: { score, ...data }, replace: true })
 
       return
     }
@@ -49,12 +48,8 @@ const PassingTestPage = () => {
         </Styled.Label>
       ))}
 
-      <Styled.Button onClick={onNextBtnClick}>
-        Следующий вопрос
-      </Styled.Button>
-      <Styled.ErrorCase>
-          {error}
-        </Styled.ErrorCase>
+      <Styled.Button onClick={onNextBtnClick}>Следующий вопрос</Styled.Button>
+      <Styled.ErrorCase>{error}</Styled.ErrorCase>
     </Styled.MainCase>
   )
 }

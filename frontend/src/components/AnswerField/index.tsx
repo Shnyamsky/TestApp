@@ -1,4 +1,5 @@
 import { FC } from "react"
+import { NumberInput } from "../NumberInput"
 import * as Styled from "./styled"
 
 type AnswerFieldProps = {
@@ -9,23 +10,12 @@ type AnswerFieldProps = {
   onChangePoints: React.ChangeEventHandler<HTMLInputElement>
 }
 
-const AnswerField: FC<AnswerFieldProps> = ({
-  label,
-  answerText,
-  onChangeAnswerText,
-  points,
-  onChangePoints
-}) => {
+const AnswerField: FC<AnswerFieldProps> = ({ label, answerText, onChangeAnswerText, points, onChangePoints }) => {
   return (
     <Styled.Label>
       {label}
-      <Styled.AnswerInput
-        type="text"
-        value={answerText}
-        onChange={onChangeAnswerText}
-        placeholder="Введите ответ"
-      />
-      <Styled.PointsInput type="number" value={points} onChange={onChangePoints} />
+      <Styled.AnswerInput type="text" value={answerText} onChange={onChangeAnswerText} placeholder="Введите ответ" />
+      <NumberInput value={points} onChange={onChangePoints} />
     </Styled.Label>
   )
 }

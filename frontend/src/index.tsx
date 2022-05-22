@@ -2,15 +2,35 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router-dom"
+import { ThemeProvider, createTheme } from "@mui/material/styles"
+import { QueryClient, QueryClientProvider } from "react-query"
 
 import App from "./App"
 import { store } from "./store"
 import * as serviceWorker from "./serviceWorker"
-import { QueryClient, QueryClientProvider } from "react-query"
 import { globalStyles } from "./styled"
 import { Global } from "@emotion/react"
 
 const queryClient = new QueryClient()
+
+const theme = createTheme({
+  palette: {
+    mode: "light",
+    primary: {
+      main: "#6571b9"
+    },
+    secondary: {
+      main: "#E9EBF3"
+    },
+    background: {
+      default: "#e8eaf6",
+      paper: "rgba(0, 0, 0, 0.3)"
+    },
+    text: {
+      primary: "#E9EBF3"
+    }
+  }
+})
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,7 +38,9 @@ ReactDOM.render(
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <Global styles={globalStyles} />
-          <App />
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
         </QueryClientProvider>
       </Provider>
     </BrowserRouter>

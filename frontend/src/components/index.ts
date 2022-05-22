@@ -1,2 +1,4 @@
-export { InputField } from "./InputField"
-export { AnswerField } from "./AnswerField"
+export * from "./InputField"
+export * from "./AnswerField"
+export * from "./DeleteButton"
+export * from "./NumberInput"

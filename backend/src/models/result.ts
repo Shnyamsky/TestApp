@@ -6,7 +6,10 @@ export class Result extends TimeStamps {
   public name!: string
 
   @prop({ required: true })
-  public testName!: string
+  public testSlug!: string
+
+  @prop({ required: true })
+  public text!: string
 
   @prop({ required: true })
   public score!: number

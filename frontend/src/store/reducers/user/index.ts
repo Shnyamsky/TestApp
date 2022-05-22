@@ -1,5 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { RootState, AppThunk } from "../../index"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { UserState, EnterPayload } from "./types"
 
 const initialState: UserState = {
@@ -36,7 +35,13 @@ export const userSlice = createSlice({
       ...state,
       ...payload,
       isAuthorized: true
-    })
+    }),
+
+    logout: () => {
+      sessionStorage.clear()
+
+      return initialState
+    }
   }
 })
 
