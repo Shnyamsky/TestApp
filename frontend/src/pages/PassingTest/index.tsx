@@ -12,11 +12,13 @@ const PassingTestPage = () => {
 
   const [current, setCurrent] = useState(0)
   const [score, setScore] = useState(0)
+  const [disable, setDisable] = useState(true)
 
   const navigate = useNavigate()
 
   const onChangeCheckbox = (points: number) => (e: any) => {
     setScore(e.target.checked ? score + points : score - points)
+    setDisable(e.target.checked === false)
   }
 
   const onNextBtnClick = () => {
@@ -49,8 +51,8 @@ const PassingTestPage = () => {
         </Styled.Label>
       ))}
 
-      <Styled.Button onClick={onNextBtnClick}>
-        Следующий вопрос
+      <Styled.Button onClick={onNextBtnClick} disabled={disable}>
+        {(current + 1 === data.questions.length) ? 'Завершить' : 'Следующий вопрос'}
       </Styled.Button>
       <Styled.ErrorCase>
           {error}

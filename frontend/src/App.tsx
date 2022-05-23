@@ -1,7 +1,6 @@
 import React, { useEffect } from "react"
 import { Route, Routes, useLocation, useNavigate } from "react-router"
 
-import "./App.css"
 import { useAppDispatch, useAppSelector } from "./hooks/store"
 import Layout from "./layout"
 

@@ -33,6 +33,10 @@ export const Button = styled.button`
   text-decoration: none;
   display: inline-block;
 
+  &:disabled {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
   &:hover {
     background-color: rgba(255, 255, 255, 0.3);
   }
