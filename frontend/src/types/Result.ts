@@ -1,1 +1,8 @@
-export type Result = { name: string; testSlug: string; text: string; score: number }
+import { Student } from "./Student"
+
+export type Result = {
+  student: Student
+  testSlug: string
+  text: string
+  score: number
+}

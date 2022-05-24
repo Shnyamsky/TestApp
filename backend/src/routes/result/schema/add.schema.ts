@@ -1,10 +1,11 @@
 import { FastifySchema } from "fastify"
 import { Static, Type } from "@sinclair/typebox"
 import { RouteGenericInterface } from "fastify/types/route"
+import { Student } from "../../../shared/schema/student.schema"
 
 const AddResultDto = Type.Object({
   result: Type.Object({
-    name: Type.String(),
+    student: Student,
     score: Type.Number(),
     testSlug: Type.String(),
     text: Type.String()

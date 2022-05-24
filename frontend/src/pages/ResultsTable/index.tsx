@@ -19,7 +19,9 @@ const ResultsTablePage = () => {
       <Styled.TableCase>
         <thead>
           <tr>
-            <th>Имя</th>
+            <th>Студент</th>
+            <th>Группа</th>
+            <th>Год</th>
             <th>Результат</th>
             <th />
           </tr>
@@ -27,7 +29,9 @@ const ResultsTablePage = () => {
         <tbody>
           {data.map((result: Result, index: number) => (
             <tr key={index}>
-              <td>{result.name}</td>
+              <td>{result.student.name + " " + result.student.surName}</td>
+              <td>{result.student.studyGroup}</td>
+              <td>{result.student.studyYear}</td>
               <td>{result.score}</td>
               <td>{result.text}</td>
             </tr>

@@ -6,7 +6,7 @@ import { Condition } from "../../types"
 import * as Styled from "./styled"
 
 const ResultPage = () => {
-  const name = useAppSelector((state) => state.user.name)
+  const user = useAppSelector((state) => state.user)
 
   const location = useLocation() as { state: { score: number; slug: string; conditions: Condition[] } }
   const { score, slug, conditions } = location.state
@@ -16,7 +16,19 @@ const ResultPage = () => {
   const resultCondition = conditions.reduce((acc, cond) => (score <= acc.score ? acc : cond))
 
   useEffect(() => {
-    API.saveResult({ score, name, testSlug: slug, text: resultCondition.text })
+    if (user.studyYear && user.studyGroup) {
+      API.saveResult({
+        score,
+        testSlug: slug,
+        text: resultCondition.text,
+        student: {
+          name: user.name,
+          surName: user.surName,
+          studyYear: user.studyYear,
+          studyGroup: user.studyGroup
+        }
+      })
+    }
   }, [])
 
   return (
