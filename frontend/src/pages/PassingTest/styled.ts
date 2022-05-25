@@ -36,6 +36,10 @@ export const Button = styled.button`
   &:hover {
     background-color: rgba(255, 255, 255, 0.3);
   }
+
+  &:disabled {
+    color: rgba(255, 255, 255, 0.3);
+  }
 `
 
 export const H4 = styled.h4`
