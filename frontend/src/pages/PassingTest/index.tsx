@@ -43,11 +43,11 @@ const PassingTestPage = () => {
       </Styled.H4>
       <h3>{data.questions[current].text}</h3>
 
-      {data.questions[current].answers.map((answer: { text: string; points: number }) => (
+      {data.questions[current].answers.map((answer: { text: string; points: number }, index) => (
         <Styled.Label key={answer.text}>
           <input
             type={data.questions[current].answersType}
-            onChange={onChangeCheckbox(answer.points, data.questions[current].answers.indexOf(answer))}
+            onChange={onChangeCheckbox(answer.points, index)}
             name="answers"
           />
           {answer.text}
