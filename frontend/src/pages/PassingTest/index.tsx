@@ -8,14 +8,16 @@ const PassingTestPage = () => {
   const { slug } = useParams()
 
   const { isLoading, error, data } = useQuery("passing-test", API.getPassingTest(slug))
-
+  
   const [current, setCurrent] = useState(0)
   const [score, setScore] = useState(0)
+  const [checked, setChecked] = useState([])
 
   const navigate = useNavigate()
 
-  const onChangeCheckbox = (points: number) => (e: any) => {
+  const onChangeCheckbox = (points: number, index: number) => (e: any) => {
     setScore(e.target.checked ? score + points : score - points)
+    setChecked(e.target.checked ? [...checked, index] : checked.filter(elem => elem != index))
   }
 
   const onNextBtnClick = () => {
@@ -26,6 +28,7 @@ const PassingTestPage = () => {
       return
     }
 
+    setChecked([])
     setCurrent(next)
   }
 
@@ -40,15 +43,23 @@ const PassingTestPage = () => {
       </Styled.H4>
       <h3>{data.questions[current].text}</h3>
 
-      {data.questions[current].answers.map((answer: { text: string; points: number }) => (
+      {data.questions[current].answers.map((answer: { text: string; points: number }, index) => (
         <Styled.Label key={answer.text}>
-          {console.log(data.questions[current].answersType, "answersType")}
-          <input type={data.questions[current].answersType} onChange={onChangeCheckbox(answer.points)} name="answers" />
+          <input
+            type={data.questions[current].answersType}
+            onChange={onChangeCheckbox(answer.points, index)}
+            name="answers"
+          />
           {answer.text}
         </Styled.Label>
       ))}
 
-      <Styled.Button onClick={onNextBtnClick}>Следующий вопрос</Styled.Button>
+      <Styled.Button
+        onClick={onNextBtnClick}
+        disabled={!checked.length}
+      >
+        {current + 1 === data.questions.length ? 'Завершить' : 'Следующий вопрос'}
+      </Styled.Button>
       <Styled.ErrorCase>{error}</Styled.ErrorCase>
     </Styled.MainCase>
   )
