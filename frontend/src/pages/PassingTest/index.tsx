@@ -58,7 +58,7 @@ const PassingTestPage = () => {
         onClick={onNextBtnClick}
         disabled={!checked.length}
       >
-        Следующий вопрос
+        {current + 1 === data.questions.length ? 'Завершить' : 'Следующий вопрос'}
       </Styled.Button>
       <Styled.ErrorCase>{error}</Styled.ErrorCase>
     </Styled.MainCase>
